@@ -41,9 +41,7 @@ class Header extends Component {
           <form class="form-inline my-2 my-lg-0">
             <Example />
 
-            {/* <button type="submit" onClick={() => this.example()} class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-              Launch static backdrop modal
-</button> */}
+
 
 
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -56,9 +54,9 @@ class Header extends Component {
                     </button>
                   </div>
                   <div class="modal-body">
-                    {/* <Login />    */}
-                    ...
-      </div>
+                    <Login />   
+                    
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Understood</button>
@@ -66,7 +64,7 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-            {/* <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button> */}
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button> 
           </form>
         </div>
       </nav>

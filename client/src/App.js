@@ -36,7 +36,7 @@ class App extends Component {
     return (
 
       <div className="App">
-        {this.state.user ? (<Home />) : (<Login />)}
+        {/* {this.state.user ? (<Home />) : (<Login />)} */}
         <Header />
         <Headline />
         <CenteredGrid />
