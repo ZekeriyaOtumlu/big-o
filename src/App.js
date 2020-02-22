@@ -5,6 +5,8 @@ import CenteredGrid from './components/wrapper/wrapper'
 import Login from './login'
 import Home from "./home"
 import fire from "./config/fire"
+import Modal from 'react-bootstrap/Modal'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
@@ -35,9 +37,9 @@ class App extends Component {
 
       <div className="App">
         {this.state.user ? (<Home />) : (<Login />)}
-        {/* <Header />
+        <Header />
         <Headline />
-        <CenteredGrid /> */}
+        <CenteredGrid />
 
       </div>
 

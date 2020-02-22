@@ -39,7 +39,7 @@ class Login extends Component {
                                 name="password" class="form-control" id="exampleInputPassword1" placeholder="password" />
                         </div>
 
-                        <button type="submit" onClick={this.login} class="btn btn-primary">Login</button>
+                        <button type="submit" onClick={this.login} class="btn btn-primary">Log in</button>
                     </form>
 
                 </div>
