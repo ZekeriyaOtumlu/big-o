@@ -7,8 +7,9 @@ import Home from "./home"
 import fire from "./config/fire"
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css';
+import sportsInfo from './components/utils/API'
+
 
 class App extends Component {
  state = {

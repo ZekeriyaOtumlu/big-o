@@ -1,0 +1,5 @@
+odds-api
+
+472906afe7881a4b02da7ee4a812ecef
+
+https://api.the-odds-api.com/v3/odds/?sport=UPCOMING&region=us&mkt=h2h&apiKey=472906afe7881a4b02da7ee4a812ecefgit pull
