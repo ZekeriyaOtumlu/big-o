@@ -7,20 +7,29 @@ import Home from "./home"
 import fire from "./config/fire"
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import sportsInfo from './components/utils/API'
+import { ListItemSecondaryAction } from '@material-ui/core';
 
 
 class App extends Component {
- state = {
-      user: {},
-    }
-  
-  componentDidMount = ()=> {
-    this.authListener();
+  state = {
+    odds: [],
+    isLoaded: false,
   }
 
-  authListener = ()=> {
+  componentDidMount = () => {
+    this.authListener();
+    fetch( 'https://api.the-odds-api.com/v3/odds?sport=basketball_nba&region=us&apiKey=472906afe7881a4b02da7ee4a812ecef')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          isLoaded: true,
+          odds: json,
+        })
+      })
+  }
+
+  authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
 
       if (user) {
@@ -34,21 +43,42 @@ class App extends Component {
 
 
   render() {
-    return (
 
-      <div className="App">
-        {/* {this.state.user ? (<Home />) : (<Login />)} */}
-        <Header />
-        <Headline />
-        <CenteredGrid />
+    var { isLoaded, odds } = this.state;
 
-      </div>
+    if (!isLoaded) {
+        return <div>Loading...</div>;
+    }
+
+    else {
+
+      return (
+
+        <div className="App">
+          <ul>
+              {odds.data.map(odds => (
+                <li key={odds.id}>
+                  {odds.teams}
+                  {/* {odds.sites.odds} */}
+                </li>
+              ))}
+
+          </ul>
+          {/* {this.state.user ? (<Home />) : (<Login />)} */}
+          <Header />
+          <Headline />
+          <CenteredGrid 
+          
+          />
+
+        </div>
 
 
 
-    );
+      );
+    }
+
   }
-
 }
 
 export default App;
