@@ -9,6 +9,6 @@ const sportSchema = new Schema ({
     date: {type: Date, default: Date.now}
 });
 
-const Sport = mongoose.model ("Sport", bookSchema);
+const Sport = mongoose.model ("Sport", sportSchema);
 
 module.exports = Sport;
