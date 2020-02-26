@@ -9,25 +9,25 @@ import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sportsInfo from './components/utils/API'
 import { ListItemSecondaryAction } from '@material-ui/core';
-
+import json from './components/results/results.json'
 
 class App extends Component {
   state = {
-    odds: [],
+    matchup: [],
     isLoaded: false,
   }
 
-  componentDidMount = () => {
-    this.authListener();
-    fetch( 'https://api.the-odds-api.com/v3/odds?sport=basketball_nba&region=us&apiKey=472906afe7881a4b02da7ee4a812ecef')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          odds: json,
-        })
-      })
-  }
+  // componentDidMount = () => {
+  //   this.authListener();
+  //   fetch( 'https://api.the-odds-api.com/v3/odds?sport=basketball_nba&region=us&mkt=spreads&apiKey=fbf453c4368699f118ccfd0e8ddefe51')
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       this.setState({
+  //         isLoaded: true,
+  //         matchup: json,
+  //       })
+  //     })
+  // }
 
   authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
@@ -43,31 +43,35 @@ class App extends Component {
 
 
   render() {
+    console.log(json)
 
-    var { isLoaded, odds } = this.state;
 
-    if (!isLoaded) {
-        return <div>Loading...</div>;
-    }
+    // var { isLoaded, matchup } = this.state;
 
-    else {
+    // if (!isLoaded) {
+    //     return <div>Loading...</div>;
+    // }
+
+    // else {
 
       return (
 
         <div className="App">
-          <ul>
-              {odds.data.map(odds => (
-                <li key={odds.id}>
-                  {odds.teams}
+    
+          {/* {this.state.user ? (<Home />) : (<Login />)} */}
+          <Header />
+          <Headline />
+           <ul>
+              {json.data.map(res => (
+                <li key={res.id}>
+                   <b>Teams:</b> {res.teams[0]} vs {res.teams[1]} <b>Spread</b>  ,  {res.sites[0].odds.spreads.points[0]}  {res.sites[0].odds.spreads.points[1]}
+
+
                   {/* {odds.sites.odds} */}
                 </li>
               ))}
 
           </ul>
-          {/* {this.state.user ? (<Home />) : (<Login />)} */}
-          <Header />
-          <Headline />
-          <CenteredGrid 
           
           />
 
@@ -79,6 +83,6 @@ class App extends Component {
     }
 
   }
-}
+
 
 export default App;
